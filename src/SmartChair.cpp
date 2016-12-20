@@ -8,8 +8,9 @@ SmartChair::SmartChair(
     uint8_t sittingDurationInSec,
     uint8_t restorationDurationInSec,
     uint8_t rangeThreshold) :
-    _energyBar (pinBarDclk, pinBarDi, 0),
-    _ultrasonic (pinUltrasonicRangeFinder) {
+      _energyBar (pinBarDclk, pinBarDi, 0),
+      _ultrasonic (pinUltrasonicRangeFinder) {
+
   _energy = 255;
   setDurations(sittingDurationInSec, restorationDurationInSec);
   _rangeThreshold = rangeThreshold;

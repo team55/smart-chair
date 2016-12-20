@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "SmartChair.h"
 
+#define USELCD
+
 const int kPinBarDclk = 2;
 const int kPinBarDi = 13;
 const int kPinUltrasonicRangeFinder = 14;
@@ -13,6 +15,8 @@ SmartChair smartChair(kPinBarDclk, kPinBarDi, kPinUltrasonicRangeFinder,
     kPinVibrationMotor, kSittingDurationInSec, kRestorationDuration_s, kRangeThreshold);
 
 void setup() {
+
+  
   //Turn on GPIO on Wio Board
   pinMode(15, OUTPUT);
   digitalWrite(15, HIGH);
