@@ -1,9 +1,9 @@
 ### Hardware Components:
 
-* Wio Node
-* IR Distance Interrupter
-* LED Bar
-* Blue Insulating Tape
+* NodeMCU v3
+* HC-SR04 Ultrasonic Ranger
+* HY-1.8SPI LCD
+* Red Insulating Tape
 * Power Adapter
 * Wires
 
