@@ -1,6 +1,7 @@
 #include "SmartChair.h"
 
-SmartChair::SmartChair(uint8_t pinBarDclk,
+SmartChair::SmartChair(
+    uint8_t pinBarDclk,
     uint8_t pinBarDi,
     uint8_t pinUltrasonicRangeFinder,
     uint8_t pinVibrationMotor,
