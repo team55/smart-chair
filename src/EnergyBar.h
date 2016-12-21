@@ -3,8 +3,9 @@
 
 #include <Arduino.h>
 #include <Grove_LED_Bar.h>
+#include <interface.Energybar.h>
 
-class EnergyBar {
+class EnergyBar : public iEnergyBar {
 public:
   //Create object with Grove_LED_Bar on specified ports
   EnergyBar(uint8_t pinDclk, uint8_t pinDi, uint8_t direction);
@@ -17,6 +18,6 @@ public:
 
 private:
   Grove_LED_Bar _ledBar;
-  
+
 };
 #endif

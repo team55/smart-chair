@@ -1,5 +1,10 @@
 #include "SmartChair.h"
 
+//todo передавать объекты в конструктор или устанавливать как свойства
+//Вибромотор (состояние, старт, стоп)
+//Индикатор жизни (значение)
+//Датчик расстояния (дай значение)
+
 SmartChair::SmartChair(
     uint8_t pinBarDclk,
     uint8_t pinBarDi,
@@ -8,6 +13,8 @@ SmartChair::SmartChair(
     uint8_t sittingDurationInSec,
     uint8_t restorationDurationInSec,
     uint8_t rangeThreshold) :
+
+      //Конструкторы приватных объектов
       _energyBar (pinBarDclk, pinBarDi, 0),
       _ultrasonic (pinUltrasonicRangeFinder) {
 
@@ -20,6 +27,33 @@ SmartChair::SmartChair(
   pinMode(_pinVibrationMotor, OUTPUT);
   vibrationState = LOW;
 }
+
+
+
+SmartChair::SmartChair(
+    uint8_t sittingDurationInSec,
+    uint8_t restorationDurationInSec,
+    uint8_t rangeThreshold) {
+
+  _energy = 255;
+  setDurations(sittingDurationInSec, restorationDurationInSec);
+  _rangeThreshold = rangeThreshold;
+  _lastSitCheck_ms = 0;
+  _nextConfigCheck_ms = 0;
+
+  // _pinVibrationMotor = pinVibrationMotor;
+  // pinMode(_pinVibrationMotor, OUTPUT);
+  // vibrationState = LOW;
+
+  //gcc Требует конструкторы объектов
+   _energyBar = EnergyBar(0, 0, 0),
+   _ultrasonic = Ultrasonic(0);
+
+
+}
+
+
+
 
 void SmartChair::init() {
   _energyBar.init();
@@ -90,7 +124,9 @@ void SmartChair::check() {
 }
 
 void SmartChair::saveEnergy() {
+
   _energyBar.setEnergy(_energy);
+
   _firebaseDatabaseSC.setEnergy(_energy);
   Serial.print("energy = ");
   Serial.println(_energy);

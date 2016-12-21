@@ -16,6 +16,13 @@ public:
       uint8_t restorationDurationInSec,
       uint8_t rangeThreshold);
 
+  //Простой конструктор
+  SmartChair(
+          uint8_t sittingDurationInSec,
+          uint8_t restorationDurationInSec,
+          uint8_t rangeThreshold);
+
+
   void init();
 
   /*Set the resolution in the duration of the sitting position and the duration
@@ -40,6 +47,7 @@ private:
   boolean _isPersonSitting;
   uint16_t _durationPerPoint_ms;
   uint8_t _rangeThreshold;
+
   EnergyBar _energyBar;
   FirebaseDatabaseSC _firebaseDatabaseSC;
   Ultrasonic _ultrasonic;
