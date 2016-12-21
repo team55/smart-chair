@@ -33,7 +33,9 @@ SmartChair::SmartChair(
 SmartChair::SmartChair(
     uint8_t sittingDurationInSec,
     uint8_t restorationDurationInSec,
-    uint8_t rangeThreshold) {
+    uint8_t rangeThreshold):
+     _energyBar NULL,
+    _ultrasonic NULL {
 
   _energy = 255;
   setDurations(sittingDurationInSec, restorationDurationInSec);
@@ -48,6 +50,8 @@ SmartChair::SmartChair(
   //gcc Требует конструкторы объектов
    _energyBar = EnergyBar(0, 0, 0),
    _ultrasonic = Ultrasonic(0);
+  //  _energyBar = NULL;
+  //  _ultrasonic = NULL;
 
 
 }
