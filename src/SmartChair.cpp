@@ -12,6 +12,7 @@
 //Либо как то извратиться с конструктором объекта? Все забыл уже....
 
 SmartChair::SmartChair(
+    IVibration::SetState *callback,
     uint8_t pinBarDclk,
     uint8_t pinBarDi,
     uint8_t pinUltrasonicRangeFinder,
@@ -33,36 +34,6 @@ SmartChair::SmartChair(
   pinMode(_pinVibrationMotor, OUTPUT);
   vibrationState = LOW;
 }
-
-
-
-SmartChair::SmartChair(
-    uint8_t sittingDurationInSec,
-    uint8_t restorationDurationInSec,
-    uint8_t rangeThreshold):
-    //требует прям
-     _energyBar (pinBarDclk, pinBarDi, 0),
-    _ultrasonic (pinUltrasonicRangeFinder) {
-
-  _energy = 255;
-  setDurations(sittingDurationInSec, restorationDurationInSec);
-  _rangeThreshold = rangeThreshold;
-  _lastSitCheck_ms = 0;
-  _nextConfigCheck_ms = 0;
-
-  // _pinVibrationMotor = pinVibrationMotor;
-  // pinMode(_pinVibrationMotor, OUTPUT);
-  // vibrationState = LOW;
-
-  //gcc Требует конструкторы объектов
-   _energyBar = EnergyBar(0, 0, 0),
-   _ultrasonic = Ultrasonic(0);
-  //  _energyBar = NULL;
-  //  _ultrasonic = NULL;
-
-
-}
-
 
 
 

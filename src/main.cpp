@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "SmartChair.h"
 
+#include "VibroMotor.h"
+
 const int kSittingDurationInSec = 2*60;
 const int kRestorationDuration_s = 30;
 const int kRangeThreshold = 10;
@@ -12,14 +14,18 @@ const int kPinVibrationMotor = 5;
   //создавать энержибар интерфейс-объект передавать в конструктор укзатель
   //установка значения будет для объекта интерфейса а не конкретной имплементации
 
-  iEnergyBar EnergyBar(1,1,1);
-  SmartChair smartChair(kSittingDurationInSec, kRestorationDuration_s, kRangeThreshold);
+  // iEnergyBar EnergyBar(1,1,1);
+  // SmartChair smartChair(kSittingDurationInSec, kRestorationDuration_s, kRangeThreshold);
   const int kPinBarDclk = 2;
   const int kPinBarDi = 13;
   const int kPinUltrasonicRangeFinder = 14;
 
+
+
+
   SmartChair smartChair(kPinBarDclk, kPinBarDi, kPinUltrasonicRangeFinder,
     kPinVibrationMotor, kSittingDurationInSec, kRestorationDuration_s, kRangeThreshold);
+
 
 
 #else

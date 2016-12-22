@@ -1,7 +1,5 @@
 #ifndef INTERFACE_ENERGY_BAR
 #define INTERFACE_ENERGY_BAR
-#ifndef INTERFACE_ENERGY_BAR
-#define INTERFACE_ENERGY_BAR
 
 class iEnergyBar
 {

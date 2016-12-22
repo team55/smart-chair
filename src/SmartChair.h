@@ -6,9 +6,13 @@
 #include "FirebaseDatabaseSC.h"
 #include <Ultrasonic.h>
 
+//Интерфейсы оборудования
+#include <IVibration.h>
+
 class SmartChair {
 public:
-  SmartChair(uint8_t pinBarDclk,
+  SmartChair(
+      uint8_t pinBarDclk,
       uint8_t pinBarDi,
       uint8_t pinUltrasonicRangeFinder,
       uint8_t pinVibrationMotor,
@@ -16,12 +20,15 @@ public:
       uint8_t restorationDurationInSec,
       uint8_t rangeThreshold);
 
-  //Простой конструктор
   SmartChair(
+          IVibration::SetState *callback,
+          uint8_t pinBarDclk,
+          uint8_t pinBarDi,
+          uint8_t pinUltrasonicRangeFinder,
+          uint8_t pinVibrationMotor,
           uint8_t sittingDurationInSec,
           uint8_t restorationDurationInSec,
           uint8_t rangeThreshold);
-
 
   void init();
 
