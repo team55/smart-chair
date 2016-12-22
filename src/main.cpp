@@ -14,6 +14,12 @@ const int kPinVibrationMotor = 5;
 
   iEnergyBar EnergyBar(1,1,1);
   SmartChair smartChair(kSittingDurationInSec, kRestorationDuration_s, kRangeThreshold);
+  const int kPinBarDclk = 2;
+  const int kPinBarDi = 13;
+  const int kPinUltrasonicRangeFinder = 14;
+
+  SmartChair smartChair(kPinBarDclk, kPinBarDi, kPinUltrasonicRangeFinder,
+    kPinVibrationMotor, kSittingDurationInSec, kRestorationDuration_s, kRangeThreshold);
 
 
 #else
