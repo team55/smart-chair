@@ -3,7 +3,13 @@
 //todo передавать объекты в конструктор или устанавливать как свойства
 //Вибромотор (состояние, старт, стоп)
 //Индикатор жизни (значение)
+//http://stackoverflow.com/questions/3065154/undefined-reference-to-vtable
 //Датчик расстояния (дай значение)
+//С писанием в сериал порт тоже не айс
+
+//Передавать в конструктор указатели на каллбеки определенного интерфейса?
+//В объекте проверять что указатель существует и дергать каллбек
+//Либо как то извратиться с конструктором объекта? Все забыл уже....
 
 SmartChair::SmartChair(
     uint8_t pinBarDclk,
@@ -34,8 +40,9 @@ SmartChair::SmartChair(
     uint8_t sittingDurationInSec,
     uint8_t restorationDurationInSec,
     uint8_t rangeThreshold):
-     _energyBar NULL,
-    _ultrasonic NULL {
+    //требует прям
+     _energyBar (pinBarDclk, pinBarDi, 0),
+    _ultrasonic (pinUltrasonicRangeFinder) {
 
   _energy = 255;
   setDurations(sittingDurationInSec, restorationDurationInSec);
